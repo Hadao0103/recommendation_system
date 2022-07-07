@@ -55,8 +55,18 @@ st.markdown("<h1 style='text-align: center; color: Red;'>Recommendation System</
 
 menu = ['0. Mục tiêu kinh doanh', '1. Khám phá dữ liệu', '2. Đề xuất dựa trên nội dung', '3. Đề xuất dựa trên đánh giá sản phẩm']
 
-choice = st.sidebar.radio('Content', menu)
-if choice == '1. Khám phá dữ liệu':
+choice = st.sidebar.radio('Danh mục', menu)
+if choice == '0. Mục tiêu kinh doanh':
+    st.markdown("<h3 style='text-align: left; color: Blue;'>0. Mục tiêu kinh doanh</h3>", unsafe_allow_html=True)
+    st.image('tiki.JPG')
+    st.write("""
+        - Tiki là một hệ sinh thái thương mại “all in one”, trong đó có tiki.vn, là một website thương mại điện tử đứng top 2 của Việt Nam, top 6 khu vực Đông Nam Á. Trên trang này đã triển khai nhiều tiện ích hỗ trợ nâng cao trải nghiệm người dùng và họ muốn xây dựng nhiều tiện ích hơn nữa.
+        """)
+    st.write("""
+        - Công ty chưa có hệ thống Recommendation System và mục tiêu là có thể xây dựng được hệ thống này giúp đề xuất và gợi ý cho người dùng/ khách hàng'
+    """)
+
+elif choice == '1. Khám phá dữ liệu':
     # read data
     data_product = read_file_from_ggdr(url_product)
     data_review = read_file_from_ggdr(url_review)
@@ -64,6 +74,12 @@ if choice == '1. Khám phá dữ liệu':
     st.markdown("<h3 style='text-align: left; color: Blue;'>1. Khám phá dữ liệu</h3>", unsafe_allow_html=True)
 
     # body
+    st.write("""
+        - Dữ liệu được cung cấp sẵn gồm có các tập tin: ProductRaw.csv, ReviewRaw.csv chứa thông tin sản phẩm, review và rating cho các sản phẩm thuộc các nhóm hàng hóa như Mobile_Tablet, TV_Audio, Laptop, Camera, Accessory.
+        """)
+
+
+
     st.write('##### 1. Product Rawdata')
     st.dataframe(data_product.head(3))
 
@@ -169,6 +185,3 @@ elif choice == '3. Đề xuất dựa trên đánh giá sản phẩm':
             col2.write('Price: %s'%(results['price'].iloc[i]))
             col2.write('Rating: %s'%(results['rating'].iloc[i]))
     
-
-
-
