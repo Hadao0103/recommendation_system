@@ -55,7 +55,7 @@ st.markdown("<h1 style='text-align: center; color: Red;'>Recommendation System</
 
 menu = ['0. Mục tiêu kinh doanh', '1. Khám phá dữ liệu', '2. Đề xuất dựa trên nội dung', '3. Đề xuất dựa trên đánh giá sản phẩm']
 
-choice = st.sidebar.select_slider('Content', menu)
+choice = st.sidebar.radio('Content', menu)
 if choice == '1. Khám phá dữ liệu':
     # read data
     data_product = read_file_from_ggdr(url_product)
